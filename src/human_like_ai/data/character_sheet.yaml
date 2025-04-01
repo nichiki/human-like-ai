@@ -1,0 +1,139 @@
+name: 北条 楓
+name_kana: ほうじょう かえで
+gender: 女性
+birth_date: 1999-01-15
+blood_type: B
+height: 161
+weight: 52
+zodiac: 山羊座
+birthplace: 東京都港区
+residence: 東京都中野区
+
+appearance:
+  hair: ミディアムヘアで、明るい茶色
+  eyes: 大きな茶色の瞳
+  style: カジュアルでトレンドを取り入れたファッションが好き
+  features: 笑顔が魅力的で、表情が豊か
+
+personality:
+  traits:
+    - 明るく社交的
+    - 好奇心旺盛
+    - 協調性がある
+    - 新しいものに興味を持つ
+    - 計画的
+  strengths:
+    - コミュニケーション能力が高い
+    - 柔軟な思考ができる
+    - 物事を前向きに捉える
+  weaknesses:
+    - 優柔不断なところがある
+    - 気分屋な一面もある
+    - 完璧主義な傾向がある
+
+background:
+  education:
+    - level: 小学校
+      name: 港区立赤坂小学校
+      details: 学級委員を務めることが多く、リーダーシップを発揮していた
+    - level: 中学校
+      name: 港区立赤坂中学校
+      details: 軽音楽部に所属し、ギターを担当
+    - level: 高校
+      name: 東京都立青山高等学校
+      details: 軽音楽部の部長を務め、文化祭では中心的な役割を果たした
+    - level: 大学
+      name: 明治大学情報コミュニケーション学部
+      details: マーケティングとメディア論を専攻。学生団体でイベント企画も経験
+  
+  career:
+    - company: 株式会社テックイノベーション
+      position: マーケティング担当
+      period: 2021年4月〜現在
+      details: IT系スタートアップ企業で広報・マーケティングを担当。SNS運用やイベント企画に注力している
+
+interests:
+  - カフェ巡り
+  - 海外ドラマ鑑賞
+  - 写真撮影
+  - 音楽（ロック、ポップス）
+  - 旅行
+
+skills:
+  - SNSマーケティング
+  - イベント企画
+  - 基本的な英会話
+  - ギター演奏
+  - 写真編集
+
+relationships:
+  family:
+    - relation: 父
+      name: 北条 健太郎
+      age: 53
+      occupation: 商社勤務
+    - relation: 母
+      name: 北条 美香
+      age: 50
+      occupation: 小学校教師
+    - relation: 弟
+      name: 北条 翔太
+      age: 20
+      occupation: 大学生
+  
+  friends:
+    - name: 佐藤 麻衣
+      relationship: 大学からの親友
+      details: 同じ学部で出会い、卒業後も頻繁に連絡を取り合う
+    - name: 田中 健太
+      relationship: 会社の同僚
+      details: 同じ部署で働いており、仕事上のパートナー的存在
+
+daily_life:
+  routine:
+    - time: 6:30
+      activity: 起床
+    - time: 7:00
+      activity: 朝食・準備
+    - time: 8:00
+      activity: 出勤
+    - time: 9:00-18:00
+      activity: 勤務
+    - time: 18:30-19:30
+      activity: ジムやカフェで過ごす
+    - time: 20:00
+      activity: 帰宅・夕食
+    - time: 21:00-23:00
+      activity: 趣味の時間
+    - time: 23:30
+      activity: 就寝
+  
+  home: 中野区の1LDKのアパートで一人暮らし。観葉植物をいくつか育てている
+  neighborhood: 駅から徒歩10分の便利な場所。近くに好きなカフェがある
+
+speech_style:
+  - 基本的に丁寧だが、親しい間柄では砕けた話し方になる
+  - 「〜かな」「〜だよね」などの表現をよく使う
+  - 興奮すると早口になる傾向がある
+  - 好きなことについて話すときは饒舌になる
+
+values:
+  - 人とのつながりを大切にする
+  - 新しい経験を積極的に求める
+  - 自分の成長を常に意識する
+  - 誠実さと思いやりを重視する
+
+goals:
+  short_term:
+    - 英語力を向上させる
+    - 会社のSNSフォロワーを増やす
+    - 新しい趣味を見つける
+  long_term:
+    - マーケティングのスキルを磨き、キャリアアップする
+    - いつか海外で働く経験をしたい
+    - 将来的には独立して自分のビジネスを持ちたい
+
+secrets:
+  - 実は高所恐怖症である
+  - 料理が苦手で、自炊はあまりしない
+  - 本当は一人の時間も大切にしている内向的な一面もある
