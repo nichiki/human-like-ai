@@ -122,7 +122,7 @@ def test_extract_emotion_events_success(
     mock_chain.invoke.return_value = mock_events
 
     # 感情イベントの抽出
-    result = mock_extractor.extract_emotion_events('こんにちは！')
+    result = mock_extractor.extract_emotion_events('こんにちは!')
 
     # 結果の確認
     assert mock_chain.invoke.called
@@ -139,12 +139,12 @@ def test_extract_emotion_events_empty(
     mock_extractor: EmotionEventExtractor, mock_chain: MagicMock
 ) -> None:
     """感情イベント抽出空テスト。"""
-    # モックの戻り値を設定（イベントなし）
+    # モックの戻り値を設定(イベントなし)
     mock_events = EmotionEvents(events=[])
     mock_chain.invoke.return_value = mock_events
 
     # 感情イベントの抽出
-    result = mock_extractor.extract_emotion_events('こんにちは！')
+    result = mock_extractor.extract_emotion_events('こんにちは!')
 
     # 結果の確認
     assert mock_chain.invoke.called
@@ -167,10 +167,10 @@ def test_extract_emotion_events_error(
         mock_extract.side_effect = lambda x: []
 
         # 感情イベントの抽出
-        result = []
+        result: list[dict[str, str]] = []
         try:
             # 直接モックチェーンを呼び出してエラーを確認
-            mock_chain.invoke({'input': 'こんにちは！'})
+            mock_chain.invoke({'input': 'こんにちは!'})
         except Exception:
             # エラーが発生することを確認
             pass
@@ -184,11 +184,11 @@ def test_extract_emotion_events_invalid_response(
     mock_extractor: EmotionEventExtractor, mock_chain: MagicMock
 ) -> None:
     """感情イベント抽出無効応答テスト。"""
-    # モックの戻り値を設定（eventsプロパティなし）
+    # モックの戻り値を設定(eventsプロパティなし)
     mock_chain.invoke.return_value = 'invalid response'
 
     # 感情イベントの抽出
-    result = mock_extractor.extract_emotion_events('こんにちは！')
+    result = mock_extractor.extract_emotion_events('こんにちは!')
 
     # 結果の確認
     assert mock_chain.invoke.called
@@ -231,7 +231,7 @@ def test_extract_emotion_events_integration() -> None:
             # チェーンを直接置き換え
             extractor.chain = mock_chain
 
-            result = extractor.extract_emotion_events('こんにちは！')
+            result = extractor.extract_emotion_events('こんにちは!')
 
             # 結果の確認
             assert len(result) == 1

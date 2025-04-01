@@ -130,7 +130,10 @@ def test_emotion_model_default_values() -> None:
     # 最小限の引数で感情モデルを作成
     emotion = Emotion(
         label=BasicEmotion.JOY,
+        intensity=0.0,
         target='ユーザー',
+        decay_rate=0.01,
+        amplification=1.0,
     )
 
     # デフォルト値の確認
@@ -148,6 +151,8 @@ def test_emotion_model_validation() -> None:
             label=BasicEmotion.JOY,
             intensity=1.5,  # 1.0を超える値
             target='ユーザー',
+            decay_rate=0.01,
+            amplification=1.0,
         )
 
     with pytest.raises(ValueError):
@@ -155,28 +160,36 @@ def test_emotion_model_validation() -> None:
             label=BasicEmotion.JOY,
             intensity=-0.5,  # 0.0未満の値
             target='ユーザー',
+            decay_rate=0.01,
+            amplification=1.0,
         )
 
     # 減衰率が範囲外の場合
     with pytest.raises(ValueError):
         Emotion(
             label=BasicEmotion.JOY,
+            intensity=0.0,
             target='ユーザー',
             decay_rate=1.5,  # 1.0を超える値
+            amplification=1.0,
         )
 
     with pytest.raises(ValueError):
         Emotion(
             label=BasicEmotion.JOY,
+            intensity=0.0,
             target='ユーザー',
             decay_rate=-0.5,  # 0.0未満の値
+            amplification=1.0,
         )
 
     # 増幅係数が負の場合
     with pytest.raises(ValueError):
         Emotion(
             label=BasicEmotion.JOY,
+            intensity=0.0,
             target='ユーザー',
+            decay_rate=0.01,
             amplification=-0.5,  # 0.0未満の値
         )
 
@@ -189,7 +202,10 @@ def test_emotion_model_last_updated() -> None:
     # 感情モデルの作成
     emotion = Emotion(
         label=BasicEmotion.JOY,
+        intensity=0.0,
         target='ユーザー',
+        decay_rate=0.01,
+        amplification=1.0,
     )
 
     # 最終更新時刻が現在時刻に近いことを確認
@@ -200,7 +216,10 @@ def test_emotion_model_last_updated() -> None:
     past_time = now - timedelta(hours=1)
     emotion = Emotion(
         label=BasicEmotion.JOY,
+        intensity=0.0,
         target='ユーザー',
+        decay_rate=0.01,
+        amplification=1.0,
         last_updated=past_time,
     )
 

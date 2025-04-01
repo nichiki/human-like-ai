@@ -10,16 +10,19 @@ import pytest
 import yaml
 
 from src.human_like_ai.config.character import CharacterLoader
+from src.human_like_ai.config.settings import Settings
 
 
-def test_character_loader_init(mock_settings) -> None:
+def test_character_loader_init(mock_settings: Settings) -> None:
     """CharacterLoaderの初期化テスト。"""
     loader = CharacterLoader(mock_settings)
     assert loader.settings == mock_settings
     assert loader._character_data == {}
 
 
-def test_character_loader_load(test_character_file, mock_settings) -> None:
+def test_character_loader_load(
+    test_character_file: Path, mock_settings: Settings
+) -> None:
     """キャラクター設定の読み込みテスト。"""
     # 設定のパスを一時ファイルに変更
     mock_settings.character_sheet_path = test_character_file
@@ -46,7 +49,7 @@ def test_character_loader_load_file_not_found() -> None:
 
 
 def test_character_loader_get_character_data(
-    test_character_file, mock_settings
+    test_character_file: Path, mock_settings: Settings
 ) -> None:
     """キャラクターデータの取得テスト。"""
     # 設定のパスを一時ファイルに変更
@@ -55,7 +58,7 @@ def test_character_loader_get_character_data(
     # ローダーの作成
     loader = CharacterLoader(mock_settings)
 
-    # データの取得（初回はロードが実行される）
+    # データの取得(初回はロードが実行される)
     data = loader.get_character_data()
     assert 'basic_info' in data
     assert data['basic_info']['name'] == '北条 楓'
@@ -63,13 +66,13 @@ def test_character_loader_get_character_data(
     # データの変更
     loader._character_data = {'test': 'data'}
 
-    # 再度取得（既にロード済みなのでロードは実行されない）
+    # 再度取得(既にロード済みなのでロードは実行されない)
     data = loader.get_character_data()
     assert data == {'test': 'data'}
 
 
 def test_character_loader_get_character_text(
-    test_character_file, mock_settings
+    test_character_file: Path, mock_settings: Settings
 ) -> None:
     """キャラクターテキストの取得テスト。"""
     # 設定のパスを一時ファイルに変更

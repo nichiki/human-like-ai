@@ -56,7 +56,9 @@ def test_get_settings_with_missing_env_vars(monkeypatch: MonkeyPatch) -> None:
         # os.getenvをモック化してOPENAI_API_KEYが存在しないようにする
         with patch('os.getenv') as mock_getenv:
 
-            def mock_getenv_side_effect(key, default=None):
+            def mock_getenv_side_effect(
+                key: str, default: str | None = None
+            ) -> str | None:
                 if key == 'OPENAI_API_KEY':
                     return 'dummy-api-key'
                 return default

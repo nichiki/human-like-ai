@@ -38,6 +38,8 @@ def test_find_event(emotion_manager: EmotionManager) -> None:
         label=BasicEmotion.JOY,
         intensity=0.5,
         target='ユーザー',
+        decay_rate=0.01,
+        amplification=1.0,
     )
     emotion_manager.emotions.append(emotion)
 
@@ -57,6 +59,8 @@ def test_find_opposite_event(emotion_manager: EmotionManager) -> None:
         label=BasicEmotion.JOY,
         intensity=0.5,
         target='ユーザー',
+        decay_rate=0.01,
+        amplification=1.0,
     )
     emotion_manager.emotions.append(emotion)
 
@@ -76,11 +80,15 @@ def test_derive_compound_emotion(emotion_manager: EmotionManager) -> None:
         label=BasicEmotion.JOY,
         intensity=0.5,
         target='ユーザー',
+        decay_rate=0.01,
+        amplification=1.0,
     )
     anticipation = Emotion(
         label=BasicEmotion.ANTICIPATION,
         intensity=0.5,
         target='ユーザー',
+        decay_rate=0.01,
+        amplification=1.0,
     )
 
     # 複合感情の導出
@@ -95,9 +103,27 @@ def test_derive_compound_emotion(emotion_manager: EmotionManager) -> None:
     # 複合感情が定義されていない組み合わせ
     undefined = emotion_manager._derive_compound_emotion(
         [
-            Emotion(label=BasicEmotion.JOY, target='A'),
-            Emotion(label=BasicEmotion.ANGER, target='A'),
-            Emotion(label=BasicEmotion.FEAR, target='A'),
+            Emotion(
+                label=BasicEmotion.JOY,
+                intensity=0.5,
+                target='A',
+                decay_rate=0.01,
+                amplification=1.0,
+            ),
+            Emotion(
+                label=BasicEmotion.ANGER,
+                intensity=0.5,
+                target='A',
+                decay_rate=0.01,
+                amplification=1.0,
+            ),
+            Emotion(
+                label=BasicEmotion.FEAR,
+                intensity=0.5,
+                target='A',
+                decay_rate=0.01,
+                amplification=1.0,
+            ),
         ]
     )
     assert undefined is None
@@ -124,6 +150,8 @@ def test_update_emotion_existing(emotion_manager: EmotionManager) -> None:
         label=BasicEmotion.JOY,
         intensity=0.5,
         target='ユーザー',
+        decay_rate=0.01,
+        amplification=1.0,
     )
     emotion_manager.emotions.append(emotion)
 
@@ -144,6 +172,8 @@ def test_update_emotion_opposite(emotion_manager: EmotionManager) -> None:
         label=BasicEmotion.JOY,
         intensity=0.5,
         target='ユーザー',
+        decay_rate=0.01,
+        amplification=1.0,
     )
     emotion_manager.emotions.append(emotion)
 
@@ -160,15 +190,17 @@ def test_update_emotion_opposite(emotion_manager: EmotionManager) -> None:
 
 def test_update_emotion_opposite_removal(emotion_manager: EmotionManager) -> None:
     """反対感情による削除テスト。"""
-    # 既存の感情を追加（弱い感情）
+    # 既存の感情を追加(弱い感情)
     emotion = Emotion(
         label=BasicEmotion.JOY,
         intensity=0.03,
         target='ユーザー',
+        decay_rate=0.01,
+        amplification=1.0,
     )
     emotion_manager.emotions.append(emotion)
 
-    # 反対感情の更新（強い感情）
+    # 反対感情の更新(強い感情)
     emotion_manager.update_emotion(BasicEmotion.SADNESS, 'ユーザー', 'medium')
 
     # 既存の感情が削除され、反対感情が追加されたことを確認
@@ -202,9 +234,27 @@ def test_update_global_mood(emotion_manager: EmotionManager) -> None:
     """全体的な感情状態の更新テスト。"""
     # テスト用の感情イベントを追加
     emotion_manager.emotions = [
-        Emotion(label=BasicEmotion.JOY, intensity=0.5, target='A'),
-        Emotion(label=BasicEmotion.JOY, intensity=0.7, target='B'),
-        Emotion(label=BasicEmotion.ANGER, intensity=0.3, target='C'),
+        Emotion(
+            label=BasicEmotion.JOY,
+            intensity=0.5,
+            target='A',
+            decay_rate=0.01,
+            amplification=1.0,
+        ),
+        Emotion(
+            label=BasicEmotion.JOY,
+            intensity=0.7,
+            target='B',
+            decay_rate=0.01,
+            amplification=1.0,
+        ),
+        Emotion(
+            label=BasicEmotion.ANGER,
+            intensity=0.3,
+            target='C',
+            decay_rate=0.01,
+            amplification=1.0,
+        ),
     ]
 
     # 全体的な感情状態の更新
@@ -223,9 +273,21 @@ def test_apply_decay(emotion_manager: EmotionManager) -> None:
 
     # テスト用の感情イベントを追加
     emotion_manager.emotions = [
-        Emotion(label=BasicEmotion.JOY, intensity=0.5, target='A', last_updated=past),
         Emotion(
-            label=BasicEmotion.ANGER, intensity=0.05, target='B', last_updated=past
+            label=BasicEmotion.JOY,
+            intensity=0.5,
+            target='A',
+            last_updated=past,
+            decay_rate=0.01,
+            amplification=1.0,
+        ),
+        Emotion(
+            label=BasicEmotion.ANGER,
+            intensity=0.05,
+            target='B',
+            last_updated=past,
+            decay_rate=0.01,
+            amplification=1.0,
         ),
     ]
 
@@ -246,9 +308,27 @@ def test_generate_output(emotion_manager: EmotionManager) -> None:
     """出力生成テスト。"""
     # テスト用の感情イベントを追加
     emotion_manager.emotions = [
-        Emotion(label=BasicEmotion.JOY, intensity=0.5, target='ユーザー'),
-        Emotion(label=BasicEmotion.ANTICIPATION, intensity=0.5, target='ユーザー'),
-        Emotion(label=BasicEmotion.ANGER, intensity=0.8, target='話題'),
+        Emotion(
+            label=BasicEmotion.JOY,
+            intensity=0.5,
+            target='ユーザー',
+            decay_rate=0.01,
+            amplification=1.0,
+        ),
+        Emotion(
+            label=BasicEmotion.ANTICIPATION,
+            intensity=0.5,
+            target='ユーザー',
+            decay_rate=0.01,
+            amplification=1.0,
+        ),
+        Emotion(
+            label=BasicEmotion.ANGER,
+            intensity=0.8,
+            target='話題',
+            decay_rate=0.01,
+            amplification=1.0,
+        ),
     ]
 
     # 全体的な感情状態を設定
@@ -275,8 +355,20 @@ def test_get_emotions(emotion_manager: EmotionManager) -> None:
     """感情イベントリスト取得テスト。"""
     # テスト用の感情イベントを追加
     emotions = [
-        Emotion(label=BasicEmotion.JOY, intensity=0.5, target='A'),
-        Emotion(label=BasicEmotion.ANGER, intensity=0.3, target='B'),
+        Emotion(
+            label=BasicEmotion.JOY,
+            intensity=0.5,
+            target='A',
+            decay_rate=0.01,
+            amplification=1.0,
+        ),
+        Emotion(
+            label=BasicEmotion.ANGER,
+            intensity=0.3,
+            target='B',
+            decay_rate=0.01,
+            amplification=1.0,
+        ),
     ]
     emotion_manager.emotions = emotions
 
